@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Trends Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>🌤️ Weather App</h2>
+
+    <a href="/">🏠 Home</a>
+    <a href="/trends" class="active">📊 Trends</a>
+    <a href="/about">ℹ️ About</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+        <h3>📊 Weather Analytics Dashboard</h3>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Weather Insights Dashboard</h1>
+        <p>Visual analysis of temperature, humidity, wind and weather patterns</p>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+
+        <div class="card">
+            <h3>🌦️ Weather Distribution</h3>
+            <img src="{{ url_for('static', filename='plots/weather_distribution.png') }}">
+        </div>
+
+        <div class="card">
+            <h3>🌡️ Temperature Trend</h3>
+            <img src="{{ url_for('static', filename='plots/temp_trend.png') }}">
+        </div>
+
+        <div class="card">
+            <h3>💧 Humidity Trend</h3>
+            <img src="{{ url_for('static', filename='plots/humidity_trend.png') }}">
+        </div>
+
+
+        <div class="card">
+            <h3>📊 Temperature vs Weather</h3>
+            <img src="{{ url_for('static', filename='plots/temp_weather.png') }}">
+        </div>
+        
+        <div class="card">
+            <h3>🌧️ Humidity vs Weather</h3>
+            <img src="{{ url_for('static', filename='plots/humidity_weather.png') }}" alt="Humidity vs Weather Graph" style="width:100%; border-radius:10px;">
+        </div>
+
+
+        <!-- 🔥 NEW GRAPH YOU CREATED IN APP.PY -->
+        
+
+        <div class="card">
+            <h3>🔄 Weather Transition</h3>
+            <img src="{{ url_for('static', filename='plots/weather_trend.png') }}">
+        </div>
+
+        <div class="card">
+            <h3>🥧 Weather Share</h3>
+            <img src="{{ url_for('static', filename='plots/pie.png') }}">
+        </div>
+
+        <!-- INSIGHTS -->
+        <div class="card insights">
+            <h3>💡 Key Insights</h3>
+
+            {% if insights %}
+                <ul>
+                    {% for i in insights %}
+                        <li>{{ i }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No insights available. Upload CSV first.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

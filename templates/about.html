@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>🌤️ Weather App</h2>
+
+        <a href="/">🏠 Home</a>
+        <a href="/trends">📊 Trends</a>
+        <a href="/about" class="active">ℹ️ About</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+            <h3>About Project</h3>
+        </div>
+
+        <div class="header">
+            <h1>About This Project</h1>
+            <p>Smart Weather Prediction & Analysis System</p>
+        </div>
+
+        <!-- ABOUT CONTENT -->
+        <div class="card">
+
+            <h2>🌤️ Project Overview</h2>
+            <p>
+                This project is a Smart Weather Prediction and Analysis System that uses Machine Learning
+                to predict weather conditions based on environmental factors such as temperature,
+                humidity, and wind speed.
+            </p>
+
+            <h2>⚙️ How It Works</h2>
+            <ul>
+                <li>User inputs data manually or uploads a CSV file</li>
+                <li>Machine Learning model processes the data</li>
+                <li>System predicts weather conditions</li>
+                <li>Results are visualized using charts and insights</li>
+            </ul>
+
+            <h2>🧠 Technologies Used</h2>
+            <ul>
+                <li>Python (Flask)</li>
+                <li>Machine Learning (Random Forest)</li>
+                <li>Pandas for data processing</li>
+                <li>Matplotlib & Seaborn for visualization</li>
+                <li>HTML, CSS, JavaScript for frontend</li>
+            </ul>
+
+            <h2>📊 Features</h2>
+            <ul>
+                <li>Weather prediction using ML model</li>
+                <li>CSV upload and batch prediction</li>
+                <li>Trends and data visualization</li>
+                <li>Insight generation from data</li>
+                <li>Download processed results</li>
+            </ul>
+
+            <h2>🚀 Purpose</h2>
+            <p>
+                The goal of this project is to demonstrate how Machine Learning and Data Analytics
+                can be combined to build a smart decision-support system similar to real-world
+                business intelligence tools like Power BI.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

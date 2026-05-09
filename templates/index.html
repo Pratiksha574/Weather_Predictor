@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Weather Predictor</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>🌤️ Weather App</h2>
+
+        <a href="/">🏠 Home</a>
+        <a href="/trends">📊 Trends</a>
+        <a href="/about">ℹ️ About</a>
+    </div>
+    
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+         <div class="topbar">
+            <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+            <h3>Smart Weather Dashboard</h3>
+        </div>
+
+        <div class="header">
+            <h1>🌤️ Smart Weather Predictor</h1>
+            <p>Upload your weather data or enter details below, and let us help you understand your day — from bright sunshine to unexpected storms ☀️🌧️</p>
+        </div>
+
+        <!-- FORM -->
+        <form action="/predict" method="POST">
+
+            <label>Temperature (°C):</label>
+            <input type="number" step="any" name="tempC" required>
+
+            <label>Humidity (%):</label>
+            <input type="number" step="any" name="humidity" required>
+
+            <label>Wind Speed (km/h):</label>
+            <input type="number" step="any" name="windspeedKmph" required>
+
+            <button type="submit">Predict</button>
+
+        </form>
+
+        <!-- CSV FORM -->
+        <form action="/predict_csv" method="POST" enctype="multipart/form-data">
+
+            <label>Upload CSV File:</label>
+            <input type="file" name="file" accept=".csv" required>
+
+            <button type="submit">Predict from CSV</button>
+
+        </form>
+
+        <!-- OUTPUT -->
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+
+        {% if download_link %}
+            <h3>Processing Complete ✔️</h3>
+
+            <a href="static/predicted_output.csv" download>
+                <button>⬇️ Download CSV</button>
+            </a>
+        {% endif %}
+        {% if suggestion_text %}
+            <div class="suggestion-box">
+                <h3>💡 Suggestion</h3>
+                <p>{{ suggestion_text }}</p>
+            </div>
+        {% endif %}
+
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+</html>
